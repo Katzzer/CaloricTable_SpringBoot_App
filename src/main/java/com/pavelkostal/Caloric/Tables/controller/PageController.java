@@ -24,8 +24,8 @@ public class PageController {
     private final CustomerService customerService;
 
     @GetMapping("/")
-    public String helloWorld() {
-        return "index";
+    public String rootPage() {
+        return "redirect:/customer-information";
     }
 
 
