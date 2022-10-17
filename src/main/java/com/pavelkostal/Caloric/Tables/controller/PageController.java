@@ -63,7 +63,6 @@ public class PageController {
             customerService.updateExistingCustomer(customer);
         }
 
-
         return "redirect:/customer-information";
     }
 }
