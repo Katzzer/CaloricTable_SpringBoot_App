@@ -41,9 +41,11 @@ public class PageController {
 
         if(customerFromDb.isPresent()) {
             customer = customerFromDb.get();
+            model.addAttribute("registerOrUpdate", "Update");
         } else {
             customer.setUserName(oAuth2User.getAttribute("name"));
             customer.setEmail(email);
+            model.addAttribute("registerOrUpdate", "Register");
         }
 
         model.addAttribute("customer", customer);
@@ -62,6 +64,6 @@ public class PageController {
         }
 
 
-        return "register";
+        return "redirect:/registerCustomer";
     }
 }
