@@ -7,6 +7,8 @@ import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 @Log
@@ -15,8 +17,17 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public void saveCustomer(Customer customer) {
+    public void saveNewCustomer(Customer customer) {
         log.info("Saving new customer" + customer);
         customerRepository.save(customer);
+    }
+
+    public void updateExistingCustomer(Customer customer) {
+        log.info("Updating existing customer" + customer);
+        customerRepository.save(customer);
+    }
+
+    public Optional<Customer> getCustomerFromDb(String email) {
+        return customerRepository.findCustomerByEmail(email);
     }
 }

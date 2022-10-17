@@ -21,7 +21,17 @@
                         Customer name
                     </label>
                 <td>
-                    <input th:value="${customer.getUserName()}" name="userName" type="text" id="register__userName">
+                    <input th:value="${customer.getUserName()}" name="userName" type="text" id="register__userName" readonly>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="register__email">
+                        Customer name
+                    </label>
+                <td>
+                    <input th:value="${customer.getEmail()}" name="email" type="text" id="register__email" readonly>
                 </td>
             </tr>
 
@@ -57,9 +67,11 @@
             </tr>
 
             <tr>
-                <td></td>
                 <td>
-                    <input th:type="submit" value="Register">
+                    <label for="register__register"></label>
+                </td>
+                <td>
+                    <input th:type="submit" value="Register" id="register__register">
                 </td>
             </tr>
 

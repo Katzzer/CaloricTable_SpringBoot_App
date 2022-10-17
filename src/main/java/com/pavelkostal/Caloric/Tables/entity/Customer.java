@@ -1,9 +1,12 @@
 package com.pavelkostal.Caloric.Tables.entity;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity(name = "Customer")
 @Table(name = "customer")
+@ToString
 public class Customer {
     @Id
     @SequenceGenerator(
@@ -24,6 +27,13 @@ public class Customer {
             columnDefinition = "TEXT"
     )
     private String userName;
+
+    @Column(
+            name = "email",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String email;
 
     @Column(
             name = "age",
@@ -63,6 +73,14 @@ public class Customer {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getAge() {

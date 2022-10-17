@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/")
@@ -34,6 +36,7 @@ public class PageController {
     ) {
         Customer newCustomer = new Customer();
         newCustomer.setUserName(oAuth2User.getAttribute("name"));
+        newCustomer.setEmail(oAuth2User.getAttribute("email"));
 
         model.addAttribute("customer", newCustomer);
         return "register";
@@ -41,7 +44,16 @@ public class PageController {
 
     @PostMapping("/registerCustomer")
     public String saveNewCustomer(@ModelAttribute Customer customer) {
-        customerService.saveCustomer(customer);
+        Optional<Customer> customerFromDb = customerService.getCustomerFromDb(customer.getEmail());
+
+        if (customerFromDb.isEmpty()) {
+            customerService.saveNewCustomer(customer);
+        } else {
+            customer.setId(customerFromDb.get().getId());
+            customerService.updateExistingCustomer(customer);
+        }
+
+
         return "register";
     }
 }
