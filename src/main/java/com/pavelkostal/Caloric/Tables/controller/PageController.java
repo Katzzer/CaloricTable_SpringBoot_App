@@ -34,11 +34,19 @@ public class PageController {
             @AuthenticationPrincipal OAuth2User oAuth2User,
             Model model
     ) {
-        Customer newCustomer = new Customer();
-        newCustomer.setUserName(oAuth2User.getAttribute("name"));
-        newCustomer.setEmail(oAuth2User.getAttribute("email"));
+        String email = oAuth2User.getAttribute("email");
+        Optional<Customer> customerFromDb = customerService.getCustomerFromDb(email);
 
-        model.addAttribute("customer", newCustomer);
+        Customer customer = new Customer();
+
+        if(customerFromDb.isPresent()) {
+            customer = customerFromDb.get();
+        } else {
+            customer.setUserName(oAuth2User.getAttribute("name"));
+            customer.setEmail(email);
+        }
+
+        model.addAttribute("customer", customer);
         return "register";
     }
 
