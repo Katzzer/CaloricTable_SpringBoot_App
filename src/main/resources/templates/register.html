@@ -9,35 +9,60 @@
 <h1>Welcome to Caloric Table page</h1>
 <h2>Register to our page</h2>
 <a href="/logout">Logout</a>
-<p>Welcome user <span th:text="${userName}"></span></p>
+<p>Welcome user <span th:text="${customer.getUserName()}"></span></p>
 
 <form action="#" th:action="@{/registerCustomer}" th:object="${customer}" method="post">
     <table id="registration-table">
         <tbody>
-        <tr>
-            <td>Age</td>
-            <td>
-                <input th:value="${customer.getAge()}" name="age" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>Weight</td>
-            <td>
-                <input th:value="${customer.getWeight()}" name="weight" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td>Height</td>
-            <td>
-                <input th:value="${customer.getHeight()}" name="height" type="number">
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input th:type="submit" value="Register">
-            </td>
-        </tr>
+
+            <tr>
+                <td>
+                    <label for="register__userName">
+                        Customer name
+                    </label>
+                <td>
+                    <input th:value="${customer.getUserName()}" name="userName" type="text" id="register__userName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="register__age">
+                        Age
+                    </label>
+                <td>
+                    <input th:value="${customer.getAge()}" name="age" type="number" id="register__age">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="register__weight">
+                        Weight
+                    </label>
+                </td>
+                <td>
+                    <input th:value="${customer.getWeight()}" name="weight" type="number" id="register__weight">
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="register__height">
+                        Height
+                    </label>
+                </td>
+                <td>
+                    <input th:value="${customer.getHeight()}" name="height" type="number" id="register__height">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input th:type="submit" value="Register">
+                </td>
+            </tr>
+
         </tbody>
 
     </table>
