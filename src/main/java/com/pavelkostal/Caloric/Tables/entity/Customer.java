@@ -36,6 +36,13 @@ public class Customer {
     private String email;
 
     @Column(
+            name = "gender",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String gender;
+
+    @Column(
             name = "age",
             nullable = false,
             columnDefinition = "BIGINT"
@@ -81,6 +88,14 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getAge() {

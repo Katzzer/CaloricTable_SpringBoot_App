@@ -17,9 +17,7 @@
 
             <tr>
                 <td>
-                    <label for="register__userName">
-                        Customer name
-                    </label>
+                    <label for="register__userName">Customer name</label>
                 <td>
                     <input th:value="${customer.getUserName()}" name="userName" type="text" id="register__userName" readonly>
                 </td>
@@ -27,9 +25,7 @@
 
             <tr>
                 <td>
-                    <label for="register__email">
-                        Customer name
-                    </label>
+                    <label for="register__email">Customer name</label>
                 <td>
                     <input th:value="${customer.getEmail()}" name="email" type="text" id="register__email" readonly>
                 </td>
@@ -37,9 +33,18 @@
 
             <tr>
                 <td>
-                    <label for="register__age">
-                        Age
-                    </label>
+                    <label for="register__gender">Gender</label>
+                <td>
+                    <select name="gender" id="register__gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="register__age">Age</label>
                 <td>
                     <input th:value="${customer.getAge()}" name="age" type="number" id="register__age">
                 </td>
@@ -47,9 +52,7 @@
 
             <tr>
                 <td>
-                    <label for="register__weight">
-                        Weight
-                    </label>
+                    <label for="register__weight">Weight</label>
                 </td>
                 <td>
                     <input th:value="${customer.getWeight()}" name="weight" type="number" id="register__weight">
@@ -57,9 +60,7 @@
 
             <tr>
                 <td>
-                    <label for="register__height">
-                        Height
-                    </label>
+                    <label for="register__height">Height</label>
                 </td>
                 <td>
                     <input th:value="${customer.getHeight()}" name="height" type="number" id="register__height">
@@ -79,7 +80,56 @@
 
     </table>
 
+    <p>Your daily calories should be:
+        <span class="register__daily-calories-value">0</span>
+        KCal
+    </p>
+
 </form>
+
+<script>
+    const $ageInput = document.getElementById("register__age");
+    const $weightInput = document.getElementById("register__weight");
+    const $heightInput = document.getElementById("register__height");
+    const $genderInput = document.getElementById("register__gender");
+    const $dailyCaloriesValue = document.querySelector(".register__daily-calories-value");
+    let BMR = 0;
+
+    $ageInput.addEventListener("change", (e) => {
+        calculateBMR();
+    });
+
+    $weightInput.addEventListener("change", (e) => {
+        calculateBMR();
+    });
+
+    $heightInput.addEventListener("change", (e) => {
+        calculateBMR();
+    });
+
+    $genderInput.addEventListener("change", (e) => {
+        calculateBMR();
+    });
+
+    const calculateBMR = () => {
+        const ageValue = $ageInput.value;
+        const weightValue = $weightInput.value;
+        const heightValue = $heightInput.value;
+        const genderValue = $genderInput.value;
+
+        if (genderValue === "male") {
+            BMR = 66.5 + (13.75 * weightValue) + (5.003 * heightValue) - (6.75 * ageValue);
+        } else {
+            BMR = 655.1 + (9.653 * weightValue) + (1.850 * heightValue) - (4.676 * ageValue);
+        }
+
+        $dailyCaloriesValue.innerHTML = Math.floor(BMR) + "";
+    }
+
+    // calculate BMR when data are loaded
+    calculateBMR();
+
+</script>
 
 
 </body>
