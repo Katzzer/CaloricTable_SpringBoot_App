@@ -1,0 +1,30 @@
+.register__header-wrapper {
+  color: white;
+
+  .register__header-1 {
+    background: #263238;
+    height: 32px;
+
+    .register__email-logout-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .register__logout {
+        margin-left: 20px;
+      }
+    }
+
+  }
+
+  .register__header-2 {
+    height: 72px;
+    background: #689f38;
+  }
+}
+
+//.register__title-wrapper {
+//  display: flex;
+//  justify-content: space-between;
+//}
