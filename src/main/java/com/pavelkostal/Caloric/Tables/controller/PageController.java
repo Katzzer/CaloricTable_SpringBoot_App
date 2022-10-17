@@ -49,7 +49,7 @@ public class PageController {
         }
 
         model.addAttribute("customer", customer);
-        return "register";
+        return "customer-information";
     }
 
     @PostMapping("/customer-information")

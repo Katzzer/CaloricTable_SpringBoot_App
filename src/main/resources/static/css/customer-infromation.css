@@ -19,4 +19,8 @@
   background: #689f38;
 }
 
-/*# sourceMappingURL=register.css.map */
+.register__invisible {
+  display: none;
+}
+
+/*# sourceMappingURL=customer-infromation.css.map */
