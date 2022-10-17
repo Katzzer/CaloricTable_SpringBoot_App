@@ -29,7 +29,7 @@ public class PageController {
     }
 
 
-    @GetMapping("/registerCustomer")
+    @GetMapping("/customer-information")
     public String registerCustomer(
             @AuthenticationPrincipal OAuth2User oAuth2User,
             Model model
@@ -52,7 +52,7 @@ public class PageController {
         return "register";
     }
 
-    @PostMapping("/registerCustomer")
+    @PostMapping("/customer-information")
     public String saveNewCustomer(@ModelAttribute Customer customer) {
         Optional<Customer> customerFromDb = customerService.getCustomerFromDb(customer.getEmail());
 
@@ -64,6 +64,6 @@ public class PageController {
         }
 
 
-        return "redirect:/registerCustomer";
+        return "redirect:/customer-information";
     }
 }

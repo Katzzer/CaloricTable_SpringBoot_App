@@ -28,7 +28,7 @@
 
     <p>Welcome user <span th:text="${customer.getUserName()}"></span></p>
 
-    <form action="#" th:action="@{/registerCustomer}" th:object="${customer}" method="post">
+    <form action="#" th:action="@{/customer-information}" th:object="${customer}" method="post">
         <table id="registration-table" class="table">
             <tbody>
 

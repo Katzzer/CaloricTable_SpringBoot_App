@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .csrf().ignoringAntMatchers("/h2-console/**")
                 .and()
                     .oauth2Login()
-                    .defaultSuccessUrl("/registerCustomer")
+                    .defaultSuccessUrl("/customer-information")
                 .and()
                     .headers().frameOptions().disable()
                 .and()
