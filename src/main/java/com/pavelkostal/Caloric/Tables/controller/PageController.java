@@ -35,7 +35,7 @@ public class PageController {
             Model model
     ) {
         String email = oAuth2User.getAttribute("email");
-        Optional<Customer> customerFromDb = customerService.getCustomerFromDb(email);
+        Optional<Customer> customerFromDb = customerService.getCustomerFromDbByEmail(email);
 
         Customer customer = new Customer();
 
@@ -54,7 +54,7 @@ public class PageController {
 
     @PostMapping("/customer-information")
     public String saveNewCustomer(@ModelAttribute Customer customer) {
-        Optional<Customer> customerFromDb = customerService.getCustomerFromDb(customer.getEmail());
+        Optional<Customer> customerFromDb = customerService.getCustomerFromDbByEmail(customer.getEmail());
 
         if (customerFromDb.isEmpty()) {
             customerService.saveNewCustomer(customer);

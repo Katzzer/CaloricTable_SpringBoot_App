@@ -27,7 +27,7 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
-    public Optional<Customer> getCustomerFromDb(String email) {
+    public Optional<Customer> getCustomerFromDbByEmail(String email) {
         return customerRepository.findCustomerByEmail(email);
     }
 }
